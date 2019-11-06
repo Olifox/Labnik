@@ -1,0 +1,15 @@
+int cmpinc_strlen(const void *, const void *);
+int cmpdec_strlen(const void *, const void *);
+int cmpinc_alphabet(const void *, const void *);
+int cmpdec_alphabet(const void *, const void *);
+int cmpinc_cntlet(const void *, const void *);
+int cmpdec_cntlet(const void *, const void *);
+int cmpinc_cntnum(const void *, const void *);
+int cmpdec_cntnum(const void *, const void *);
+int cmpinc_wlngth(const void *, const void *);
+int cmpdec_wlngth(const void *, const void *);
+char ** break_string(const void *);
+int callcount();
+int maximum();
+int numcount();
+int word_count(const void *);
