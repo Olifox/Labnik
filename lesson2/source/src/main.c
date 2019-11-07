@@ -79,6 +79,7 @@ int main(int argc, char *argv[]){
 			exit(EXIT_FAILURE);
 	}
 	mas_print(count, mas);
+	free (mas);
 	exit(EXIT_SUCCESS);
 }
 
