@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "cmp.h"
+#include <cmp.h>
 
 int count = 0;
 
