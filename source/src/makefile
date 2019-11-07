@@ -8,14 +8,8 @@ all: main
 main : main.o cmp.o
 	$(CC) main.o cmp.o -o main
 
-# %.o : %.c
-# 	$(CC) $(CFLAGS) -c $@
-
-main.o : main.c
-	$(CC) $(CFLAGS) -c main.c
-
-cmp.o : cmp.c
-	$(CC) $(CFLAGS) -c cmp.c
+%.o : %.c
+	$(CC) $(CFLAGS) $< -c
 
 clean :
 	rm -rf *.o main
