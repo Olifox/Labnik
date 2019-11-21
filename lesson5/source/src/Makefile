@@ -6,7 +6,7 @@ CFLAGS=-c -Wall -std=c99 -I$(STR)
 all: main
 
 main : main.o
-	$(CC) main.o -L$(STR) -lmathlib -o main
+	$(CC) main.o -o main -ldl
 
 %.o : %.c
 	$(CC) $(CFLAGS) $< -c

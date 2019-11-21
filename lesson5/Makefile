@@ -11,5 +11,5 @@ build : source/
 	mkdir build
 	make -C source ROOT_DIR=$(ROOT_DIR)
 	mkdir bin
-	find source -name "*.o" -exec mv {} build/ \;
+	find source -name "*.o" -o -name "*.so" -exec mv {} build/ \;
 	find source -name "main" -exec mv {} bin/ \;

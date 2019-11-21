@@ -2,12 +2,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
-#include <mathlib.h>
+#include <dlfcn.h>
+
 
 int main(int argc, char *argv[]){
 	int a, b, opt=0;
-	double c = 0;
+	double (*func)(int x, int y);
 	char *option;
+	void *library_handler = dlopen("/home/oli/lesson2_sort/labnik/lesson5/build/mathlib.so",RTLD_LAZY);
+
+	if (!library_handler){
+		fprintf(stderr, "dlopen() error: %s\n", dlerror());
+		exit(1);
+	}
 
 	while((opt=getopt(argc,argv,"a:b:o:"))!=-1){
 		switch (opt){
@@ -26,17 +33,22 @@ int main(int argc, char *argv[]){
 		}
 	}
 
-	if (strcmp(option,"mul")==0)
-		c=multiplication(a,b);
-	else if (strcmp(option,"div")==0)
-		c=divided(a,b);
+	if (strcmp(option,"mul")==0){
+		func = dlsym(library_handler,"multiplication");
+		printf("Results: %f\n", (*func)(a,b));
+	}
+	else if (strcmp(option,"div")==0){
+		func = dlsym(library_handler,"divided");
+		printf("Results: %f\n", (*func)(a,b));
+	}
 	else
 	{
 		fprintf(stderr, "Unknown type of processing: %s\n", option);
 		exit(EXIT_FAILURE);
 	}
 
-	printf("Results: %f\n", c);
+	dlclose(library_handler);
+	
 
 	return 0;
 }
